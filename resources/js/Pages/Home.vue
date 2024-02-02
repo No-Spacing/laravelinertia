@@ -4,7 +4,7 @@
             Add Customer
         </v-card-title>
         <v-card-text>
-            <v-form @submit.prevent="form.post('/add')">
+            <v-form @submit.prevent="submit">
                 <v-col>
                     
                     <v-row class="ma-2 pa-2">
@@ -48,5 +48,17 @@
         firstname: '',
         lastname: '',
         email: '',
+        
     })
+    function submit() {
+        form.post('/add', {
+            preserveScroll: true,
+            onSuccess: () => { 
+                alert("Success"),
+                form.reset() 
+            },
+            onError: () => form.reset(),
+        })
+    }
+
 </script>
