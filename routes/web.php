@@ -23,3 +23,5 @@ Route::inertia('/', 'Home')->name('/');
 Route::get('/customers', [CustomerController::class, 'customers']);
 
 Route::post('/add', [CustomerController::class, 'add']);
+
+Route::delete('/deleteCustomer/{id}', [CustomerController::class, 'deleteCustomer'])->name('delete.customer');

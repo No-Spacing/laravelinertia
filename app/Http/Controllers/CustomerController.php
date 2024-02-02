@@ -15,7 +15,7 @@ class CustomerController extends Controller
         $request->validate([
             'firstname' => 'required',
             'lastname' => 'required',
-            'email' => 'required|email'
+            'email' => 'required|email|unique:customers'
         ]);
 
         Customer::create($request->all());
@@ -26,6 +26,10 @@ class CustomerController extends Controller
     public function customers(){
         $customers = Customer::all();
         return Inertia::render('Customers', ['customers' => $customers]);
+    }
+
+    public function deleteCustomer($id){
+        Customer::where('id',$id)->delete();
     }
  
 }
