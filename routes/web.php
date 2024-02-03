@@ -24,4 +24,6 @@ Route::get('/customers', [CustomerController::class, 'customers']);
 
 Route::post('/add', [CustomerController::class, 'add']);
 
+Route::post('/updateCustomer', [CustomerController::class, 'updateCustomer']);
+
 Route::delete('/deleteCustomer/{id}', [CustomerController::class, 'deleteCustomer'])->name('delete.customer');
