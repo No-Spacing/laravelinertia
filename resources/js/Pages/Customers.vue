@@ -11,6 +11,7 @@
                     label="Search"
                 ></v-text-field>
             </div>
+            
             <v-data-table 
                 :search="search"
                 :headers="headers"
@@ -27,7 +28,6 @@
                     <v-btn class="mx-1 mdi mdi-trash-can bg-red" @click="submit(item.id)">Delete</v-btn>
                 </template>
             </v-data-table>
-
             <v-dialog
             v-model="dialog"
             width="520px"
@@ -71,7 +71,6 @@
 
 <script>
 import Pagination from '@/Components/Pagination.vue'
-
 
 export default {
     components: {

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\CustomerPostRequest;
 use App\Models\Customer;
 use Inertia\Inertia;
 
@@ -10,31 +10,18 @@ class CustomerController extends Controller
 {
     //
 
-    public function add(Request $request){
+    public function add(CustomerPostRequest $request){
         
-        $request->validate([
-            'firstname' => 'required',
-            'lastname' => 'required',
-            'email' => 'required|email|unique:customers'
-        ]);
-
-        Customer::create($request->all());
+        Customer::create($request->validated());
 
         return to_route('/');
     }
 
     public function customers(){
-        $customers = Customer::all();
-        return Inertia::render('Customers', ['customers' => $customers]);
+        return Inertia::render('Customers', ['customers' => fn () => Customer::get()]);
     }
 
-    public function updateCustomer(Request $request){
-       
-         $request->validate([
-            'firstname' => 'required',
-            'lastname' => 'required',
-            'email' => 'required|email|unique:customers',
-        ]);
+    public function updateCustomer(CustomerPostRequest $request){
 
         Customer::where('id', $request->id)
             ->update([
