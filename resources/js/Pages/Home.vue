@@ -57,7 +57,6 @@
                 alert("Success"),
                 form.reset() 
             },
-            onError: () => form.reset(),
         })
     }
 
