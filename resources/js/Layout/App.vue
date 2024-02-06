@@ -2,10 +2,13 @@
     <v-card>
         <v-layout>
             <v-app-bar
-                color="primary"
+                color="white"
             >
                 <v-app-bar-nav-icon variant="text" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
-                <v-toolbar-title>Laravel - Inertiajs</v-toolbar-title>
+                <div class="d-flex align-center" >
+                    <img class="mx-3" src="laravel-logo.svg" height="40px"/>
+                    <span>Laravel - Inertiajs</span>
+                </div>
             </v-app-bar>
 
             <v-navigation-drawer
